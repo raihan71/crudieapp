@@ -2,7 +2,7 @@
 
 @section('content')
 <section class="d-flex justify-content-center">
-    <div class="row p-4">
+    <div class="p-4">
         <div class="p-2">
             <a href="{{route('product.add')}}" class="btn btn-md btn-primary">
                 <span>+ Tambah</span>
@@ -19,15 +19,24 @@
             </tr>
         </thead>
         <tbody>
+            @if (count($product) <= 0)
+            <tr>
+                <td colspan="4">data kosong</td>
+            </tr>
+            @endif
             @foreach ($product as $key => $item)
                 <tr>
                     <th>{{$key+1}}</th>
                     <td>{{$item->title}}</td>
                     <td>{{$item->desc}}</td>
                     <td>
-                        <div class="align-content-around">
+                        <div class="d-flex align-content-between justify-content-between ">
                             <a href="{{route('product.edit', $item->id)}}" class="btn btn-warning">Edit</a>
-                            <a class="btn btn-danger ">Hapus</a>
+                            <form class="mx-2" action="{{ route('product.delete', $item->id) }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <input type="submit" class="btn btn-danger" value="Hapus" />
+                            </form>
                         </div>
                     </td>
                 </tr>

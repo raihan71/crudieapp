@@ -34,9 +34,29 @@ class ProductController extends Controller
     }
 
     function edit($id) {
+        $product = Product::findOrFail($id);
 
+        return view('products.edit', compact('product'));
     }
 
-    function update() {
+    function update(Request $request, $id) {
+        $request->validate([
+            'title' => 'required|string',
+            'desc'  => 'required|string'
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->title = $request->input('title');
+        $product->desc = $request->input('desc');
+        $product->save();
+
+        return redirect('/')->with('success', 'Produk berhasil diedit.');
+    }
+
+    function delete(Request $request, $id) {
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect('/')->with('success', 'Produk berhasil dihapus.');
     }
 }
