@@ -8,12 +8,17 @@
             @csrf
             <div class="form-group">
                 <label for="title">Nama Produk</label>
-                <input name="title" type="text" class="form-control" id="title" aria-describedby="fet1" placeholder="">
+                <input name="name" type="text" class="form-control" id="title" aria-describedby="fet1" placeholder="">
                 <span id="fet1" class="sr-only">Masukan nama produk yang dijual</span>
             </div>
             <div class="form-group">
                 <label for="desc">Deskripsi Produk</label>
-                <input name="desc" type="text" class="form-control" id="desc" aria-describedby="fet2" placeholder="">
+                <input name="description" type="text" class="form-control" id="desc" aria-describedby="fet2" placeholder="">
+                <span id="fet2" class="sr-only">Masukan keterangan produk yang dijual</span>
+            </div>
+            <div class="form-group">
+                <label for="desc">Image Produk</label>
+                <input name="image" type="text" class="form-control" id="desc" aria-describedby="fet2" placeholder="">
                 <span id="fet2" class="sr-only">Masukan keterangan produk yang dijual</span>
             </div>
             <button type="submit" class="btn btn-primary">Simpan</button>

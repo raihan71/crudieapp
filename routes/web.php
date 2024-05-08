@@ -13,7 +13,6 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::prefix('product')->group(function () {
@@ -23,5 +22,6 @@ Route::prefix('product')->group(function () {
     Route::post('/update/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 });
+
 
 

@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductController extends Controller
 {
     function index() {
-        $product = Product::orderBy('updated_at', 'desc')->get();
+        $product = Product::all();
 
         return view('products.index', [
             'product' => $product
@@ -21,13 +21,14 @@ class ProductController extends Controller
 
     function save(Request $request) {
         $request->validate([
-            'title' => 'required|string',
-            'desc'  => 'required|string'
+            'name' => 'required|string',
+            'description'  => 'required|string'
         ]);
 
         $product = new Product();
-        $product->title = $request->input('title');
-        $product->desc = $request->input('desc');
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->image = $request->input('image');
         $product->save();
 
         return redirect('/')->with('success', 'Produk berhasil disimpan.');
@@ -41,14 +42,15 @@ class ProductController extends Controller
 
     function update(Request $request, $id) {
         $request->validate([
-            'title' => 'required|string',
-            'desc'  => 'required|string'
+            'name' => 'required|string',
+            'description'  => 'required|string'
         ]);
 
         $product = Product::findOrFail($id);
-        $product->title = $request->input('title');
-        $product->desc = $request->input('desc');
-        $product->save();
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->image = $request->input('image');
+        $product->update();
 
         return redirect('/')->with('success', 'Produk berhasil diedit.');
     }
@@ -59,4 +61,5 @@ class ProductController extends Controller
 
         return redirect('/')->with('success', 'Produk berhasil dihapus.');
     }
+
 }

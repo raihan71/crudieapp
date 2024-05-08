@@ -15,6 +15,7 @@
                 <th>No</th>
                 <th>Nama Produk</th>
                 <th>Deskripsi Produk</th>
+                <th>Image</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -27,8 +28,11 @@
             @foreach ($product as $key => $item)
                 <tr>
                     <th>{{$key+1}}</th>
-                    <td>{{$item->title}}</td>
-                    <td>{{$item->desc}}</td>
+                    <td>{{$item->name}}</td>
+                    <td>{{$item->description}}</td>
+                    <td>
+                        <img src="{{$item->image}}" class="img-responsive" width="100" height="100" />
+                    </td>
                     <td>
                         <div class="d-flex align-content-between justify-content-between ">
                             <a href="{{route('product.edit', $item->id)}}" class="btn btn-warning">Edit</a>
