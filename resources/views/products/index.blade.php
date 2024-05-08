@@ -3,7 +3,7 @@
 @section('content')
 <section class="d-flex justify-content-center">
     <div class="p-4">
-        <div class="p-2">
+        <div class="p-2 pull-right">
             <a href="{{route('product.add')}}" class="btn btn-md btn-primary">
                 <span>+ Tambah</span>
             </a>
